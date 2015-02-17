@@ -1,7 +1,7 @@
 MENU BACKGROUND syslinux-vesa-splash.jpg
 DEFAULT vesamenu.c32
 PROMPT 0
-MENU TITLE boot.ovirt.org ($(date))
+MENU TITLE boot.ovirt.org
 
 LABEL bootlocal
         MENU DEFAULT
@@ -37,7 +37,7 @@ label Interactive Installation
         MENU INDENT 1
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
-        APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=$NODEBASEURL/ quiet
+        APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=@NODEBASEURL@/ quiet
         TEXT HELP
              Selecting this will give you an interactive installer
              for Node (x86_64).
@@ -49,7 +49,7 @@ label Auto-Installation DESTRUCTIVE
         MENU PASSPROMPT Are you sure you want to proceed? (y/n)
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
-        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=$NODEBASEURL/ quiet
+        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=@NODEBASEURL@/ quiet
         TEXT HELP
              Selecting this will automatically install Node (x86_64)
              on the host.

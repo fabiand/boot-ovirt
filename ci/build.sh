@@ -20,6 +20,7 @@ cp -v \
 # Create pxelinux.cfg
 #
 :> pxelinux.cfg
+[[ -n $NODEBASEURL ]]
 sed -e "s~@NODEBASEURL@~$NODEBASEURL~" \
     -e "s~@ENGINEBASEURL@~FIXME~" \
     pxelinux.cfg.in > pxelinux.cfg
@@ -30,18 +31,19 @@ sed -e "s~@NODEBASEURL@~$NODEBASEURL~" \
 #
 git submodule update --init --recursive --force
 
+[[ -n $BOOBASEURL ]]
 pushd ipxe/src
 cat <<EOF > script0.ipxe
 #!ipxe
 set 209:string pxelinux.cfg
-set 210:string $BOOBASE
+set 210:string $BOOBASEURL
 dhcp || goto manualnet
-chain $BOOBASE/pxelinux.0
+chain $BOOBASEURL/pxelinux.0
 :manualnet
 echo Please provide, IP address, Netmask, Gateway and Router
 ifopen net0
 config net0
-chain $BOOBASE/pxelinux.0
+chain $BOOBASEURL/pxelinux.0
 EOF
 
 make -j4 EMBED=script0.ipxe

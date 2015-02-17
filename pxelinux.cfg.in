@@ -1,0 +1,68 @@
+MENU BACKGROUND syslinux-vesa-splash.jpg
+DEFAULT vesamenu.c32
+PROMPT 0
+MENU TITLE boot.ovirt.org ($(date))
+
+LABEL bootlocal
+        MENU DEFAULT
+        MENU LABEL Local Boot
+        TEXT HELP
+                This will exit from the network boot menu and attempt
+                to boot from local media (hard disk, DVD, etc)
+        ENDTEXT
+        localboot 0x80
+
+MENU SEPARATOR
+
+label Engine (x86_64):
+        MENU DISABLE
+
+label Interactive Installation WIP
+        MENU INDENT 1
+        MENU DISABLE
+        kernel @ENGINEBASEURL@/vmlinuz
+        initrd @ENGINEBASEURL@/initrd.img
+        APPEND FIXME
+        TEXT HELP
+             Selecting this will give you an interactive installer
+             for Node (x86_64).
+        ENDTEXT
+
+MENU SEPARATOR
+
+label Node (x86_64):
+        MENU DISABLE
+
+label Interactive Installation
+        MENU INDENT 1
+        kernel @NODEBASEURL@/vmlinuz
+        initrd @NODEBASEURL@/initrd.img
+        APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=$BASEURL/ quiet
+        TEXT HELP
+             Selecting this will give you an interactive installer
+             for Node (x86_64).
+        ENDTEXT
+
+label Auto-Installation DESTRUCTIVE
+        MENU INDENT 1
+        MENU PASSWD y
+        MENU PASSPROMPT Are you sure you want to proceed? (y/n)
+        kernel @NODEBASEURL@/vmlinuz
+        initrd @NODEBASEURL@/initrd.img
+        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=$BASEURL/ quiet
+        TEXT HELP
+             Selecting this will automatically install Node (x86_64)
+             on the host.
+             WARNING: This will destroy all existing data.
+        ENDTEXT
+
+label Boot
+        MENU INDENT 1
+        kernel @NODEBASEURL@/vmlinuz
+        initrd @NODEBASEURL@/initrd.img
+        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img quiet
+        TEXT HELP
+             Selecting this will boot into a snapshot of Node
+             (x86_64).
+        ENDTEXT
+

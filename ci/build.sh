@@ -15,6 +15,9 @@ cp -v \
   /usr/share/syslinux/vesa*.c32 \
   .
 
+# Newer syslinuxes also require this file
+cp -v /usr/share/syslinux/ldlinux.c32 || :
+
 
 #
 # Create pxelinux.cfg

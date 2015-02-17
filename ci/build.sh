@@ -2,6 +2,7 @@
 
 set -ex
 
+
 #
 # Prepare syslinux
 # https://git.fedorahosted.org/cgit/fedora-infrastructure.git/
@@ -25,8 +26,10 @@ sed -e "s~@NODEBASEURL@~$NODEBASEURL~" \
 
 
 #
-# Create iPXE
+# Create iPXE images
 #
+git submodule update --init --recursive --force
+
 pushd ipxe/src
 cat <<EOF > script0.ipxe
 #!ipxe

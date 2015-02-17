@@ -21,8 +21,8 @@ cp -v \
 #
 :> pxelinux.cfg
 [[ -n $NODEBASEURL ]]
-sed -e "s~@NODEBASEURL@~$NODEBASEURL~" \
-    -e "s~@ENGINEBASEURL@~FIXME~" \
+sed -e "s~@NODEBASEURL@~$NODEBASEURL~g" \
+    -e "s~@ENGINEBASEURL@~FIXME~g" \
     pxelinux.cfg.in > pxelinux.cfg
 
 

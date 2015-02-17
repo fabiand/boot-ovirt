@@ -17,15 +17,15 @@ MENU SEPARATOR
 label Engine (x86_64):
         MENU DISABLE
 
-label Interactive Installation WIP
+label engine-install
+        MENU LABEL Interactive Installation
         MENU INDENT 1
-        MENU DISABLE
         kernel @ENGINEBASEURL@/vmlinuz
         initrd @ENGINEBASEURL@/initrd.img
-        APPEND FIXME
+        APPEND inst.ks=@ENGINEBASEURL@/interactive-installation.ks inst.stage2=@ENGINEBASEURL@/ quiet
         TEXT HELP
              Selecting this will give you an interactive installer
-             for Node (x86_64).
+             for Engine (x86_64).
         ENDTEXT
 
 MENU SEPARATOR
@@ -33,7 +33,8 @@ MENU SEPARATOR
 label Node (x86_64):
         MENU DISABLE
 
-label Interactive Installation
+label node-install
+        MENU LABEL Interactive Installation
         MENU INDENT 1
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
@@ -43,7 +44,8 @@ label Interactive Installation
              for Node (x86_64).
         ENDTEXT
 
-label Auto-Installation DESTRUCTIVE
+label node-auto-install
+        MENU LABEL Auto-Installation DESTRUCTIVE
         MENU INDENT 1
         MENU PASSWD y
         MENU PASSPROMPT Are you sure you want to proceed? (y/n)
@@ -56,7 +58,8 @@ label Auto-Installation DESTRUCTIVE
              WARNING: This will destroy all existing data.
         ENDTEXT
 
-label Boot
+label node-boot
+        MENU LABEL Boot
         MENU INDENT 1
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img

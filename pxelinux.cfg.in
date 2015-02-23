@@ -1,7 +1,7 @@
-MENU BACKGROUND syslinux-vesa-splash.jpg
 DEFAULT vesamenu.c32
 PROMPT 0
 MENU TITLE boot.ovirt.org
+MENU BACKGROUND syslinux-vesa-splash.jpg
 
 LABEL bootlocal
         MENU DEFAULT
@@ -22,7 +22,7 @@ label engine-install
         MENU INDENT 1
         kernel @ENGINEBASEURL@/vmlinuz
         initrd @ENGINEBASEURL@/initrd.img
-        APPEND inst.ks=@ENGINEBASEURL@/interactive-installation.ks inst.stage2=@ENGINEBASEURL@/ quiet
+        APPEND inst.ks=@ENGINEBASEURL@/interactive-installation.ks inst.stage2=@ENGINEBASEURL@/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Engine (x86_64).
@@ -38,7 +38,7 @@ label node-install
         MENU INDENT 1
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
-        APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=@NODEBASEURL@/ quiet
+        APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=@NODEBASEURL@/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Node (x86_64).
@@ -51,7 +51,7 @@ label node-auto-install
         MENU PASSPROMPT Are you sure you want to proceed? (y/n)
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
-        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=@NODEBASEURL@/ quiet
+        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=@NODEBASEURL@/ rhgb quiet
         TEXT HELP
              Selecting this this entry will automatically install
              oVirt Node (x86_64).
@@ -63,7 +63,7 @@ label node-boot
         MENU INDENT 1
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
-        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img quiet
+        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img rhgb quiet
         TEXT HELP
              Selecting this entry will boot the live image of
              oVirt Node (x86_64).

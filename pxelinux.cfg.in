@@ -2,7 +2,7 @@ DEFAULT vesamenu.c32
 PROMPT 0
 MENU TITLE boot.ovirt.org
 MENU BACKGROUND syslinux-vesa-splash.jpg
-MENU COLOR disabled 1;30;49 #FF000000 #00000000
+MENU COLOR disabled 1;30;49 #CC000000 #00000000 none
 
 LABEL bootlocal
         MENU DEFAULT

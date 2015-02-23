@@ -7,8 +7,8 @@ LABEL bootlocal
         MENU DEFAULT
         MENU LABEL Local Boot
         TEXT HELP
-                This will exit from the network boot menu and attempt
-                to boot from local media (hard disk, DVD, etc)
+             This will exit from the network boot menu and attempt
+             to boot from local media (hard disk, DVD, etc)
         ENDTEXT
         localboot 0x80
 
@@ -24,8 +24,8 @@ label engine-install
         initrd @ENGINEBASEURL@/initrd.img
         APPEND inst.ks=@ENGINEBASEURL@/interactive-installation.ks inst.stage2=@ENGINEBASEURL@/ quiet
         TEXT HELP
-             Selecting this will give you an interactive installer
-             for Engine (x86_64).
+             Selecting this entry will start an installer to install
+             oVirt Engine (x86_64).
         ENDTEXT
 
 MENU SEPARATOR
@@ -40,8 +40,8 @@ label node-install
         initrd @NODEBASEURL@/initrd.img
         APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=@NODEBASEURL@/ quiet
         TEXT HELP
-             Selecting this will give you an interactive installer
-             for Node (x86_64).
+             Selecting this entry will start an installer to install
+             oVirt Node (x86_64).
         ENDTEXT
 
 label node-auto-install
@@ -53,9 +53,9 @@ label node-auto-install
         initrd @NODEBASEURL@/initrd.img
         APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=@NODEBASEURL@/ quiet
         TEXT HELP
-             Selecting this will automatically install Node (x86_64)
-             on the host.
-             WARNING: This will destroy all existing data.
+             Selecting this this entry will automatically install
+             oVirt Node (x86_64).
+             WARNING: THIS WILL DESTROY ALL DATA
         ENDTEXT
 
 label node-boot
@@ -65,7 +65,8 @@ label node-boot
         initrd @NODEBASEURL@/initrd.img
         APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img quiet
         TEXT HELP
-             Selecting this will boot into a snapshot of Node
-             (x86_64).
+             Selecting this entry will boot the live image of
+             oVirt Node (x86_64).
+             Note: This requires at least 2GB of RAM.
         ENDTEXT
 

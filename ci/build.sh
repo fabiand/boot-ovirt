@@ -25,7 +25,7 @@ cp -v /usr/share/syslinux/ldlinux.c32 || :
 :> pxelinux.cfg
 [[ -n $NODEBASEURL ]]
 sed -e "s~@NODEBASEURL@~$NODEBASEURL~g" \
-    -e "s~@ENGINEBASEURL@~FIXME~g" \
+    -e "s~@ENGINEBASEURL@~$ENGINEBASEURL~g" \
     pxelinux.cfg.in > pxelinux.cfg
 
 

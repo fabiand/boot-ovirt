@@ -48,4 +48,4 @@ ln -v ipxe/src/bin/ipxe.usb ovirt-ipxe.usb
 
 
 # Build the product image
-bash -xe scripts/create-product-img.sh
+bash -xe product-img/create-product-img.sh

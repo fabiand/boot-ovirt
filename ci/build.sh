@@ -46,3 +46,6 @@ rm -f ovirt-ipxe.iso ovirt-ipxe.usb
 ln -v ipxe/src/bin/ipxe.iso ovirt-ipxe.iso
 ln -v ipxe/src/bin/ipxe.usb ovirt-ipxe.usb
 
+
+# Build the product image
+bash -xe scripts/create-product-img.sh

@@ -16,7 +16,7 @@ cp -v \
   .
 
 # Newer syslinuxes also require this file
-cp -v /usr/share/syslinux/ldlinux.c32 || :
+cp -v /usr/share/syslinux/ldlinux.c32 . || :
 
 
 #

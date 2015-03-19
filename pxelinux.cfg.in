@@ -45,19 +45,22 @@ label node-install
              oVirt Node (x86_64).
         ENDTEXT
 
-label node-auto-install
-        MENU LABEL Auto-Installation DESTRUCTIVE
-        MENU INDENT 1
-        MENU PASSWD y
-        MENU PASSPROMPT Are you sure you want to proceed? (y/n)
-        kernel @NODEBASEURL@/vmlinuz
-        initrd @NODEBASEURL@/initrd.img
-        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=@NODEBASEURL@/ rhgb quiet
-        TEXT HELP
-             Selecting this this entry will automatically install
-             oVirt Node (x86_64).
-             WARNING: THIS WILL DESTROY ALL DATA
-        ENDTEXT
+# Currently blocked by:
+# http://bugs.centos.org/view.php?id=8239 (old centos installer image)
+# https://bugzilla.redhat.com/show_bug.cgi?id=1145130 (new fedora installer can not be used with centos image)
+#label node-auto-install
+#        MENU LABEL Auto-Installation DESTRUCTIVE
+#        MENU INDENT 1
+#        MENU PASSWD y
+#        MENU PASSPROMPT Are you sure you want to proceed? (y/n)
+#        kernel @NODEBASEURL@/vmlinuz
+#        initrd @NODEBASEURL@/initrd.img
+#        APPEND inst.ks=@NODEBASEURL@/auto-installation.ks inst.stage2=@NODEBASEURL@/ rhgb quiet
+#        TEXT HELP
+#             Selecting this this entry will automatically install
+#             oVirt Node (x86_64).
+#             WARNING: THIS WILL DESTROY ALL DATA
+#        ENDTEXT
 
 label node-boot
         MENU LABEL Boot

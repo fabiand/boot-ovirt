@@ -2,10 +2,10 @@
 set 209:string pxelinux.cfg
 set 210:string @BOOBASEURL@
 dhcp || goto manualnet
-chain @BOOBASEURL@/pxelinux.0
+chain @BOOBASEURL@/lpxelinux.0
 :manualnet
 echo Please provide, IP address, Netmask, Gateway and Router
 ifopen net0
 config net0
-chain @BOOBASEURL@/pxelinux.0
+chain @BOOBASEURL@/lpxelinux.0
 

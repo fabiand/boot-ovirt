@@ -11,7 +11,7 @@ set -ex
 sudo yum install -y syslinux
 
 cp -v \
-  /usr/share/syslinux/pxelinux.0 \
+  /usr/share/syslinux/lpxelinux.0 \
   /usr/share/syslinux/*.c32 \
   .
 

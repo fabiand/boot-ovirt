@@ -1,0 +1,9 @@
+[Main]
+Product=oVirt Appliance
+Version=development
+BugURL=https://bugzilla.redhat.com
+IsFinal=False
+UUID=@BUILDID@.x86_64
+[Compose]
+Lorax=21.30-1
+

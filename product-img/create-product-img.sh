@@ -9,7 +9,7 @@ TOPDIR=$(dirname $0)
 PRDDIR=$TOPDIR/product/
 PIXMAPDIR=$PRDDIR/usr/share/anaconda/pixmaps
 
-mkdir -p $PRDDIR
+mkdir -p "$PRDDIR" "$PIXMAPDIR"
 cp -v $TOPDIR/sidebar-logo.png "$PIXMAPDIR/"
 cp -v .buildstamp "$PRDDIR/"
 

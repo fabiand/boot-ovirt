@@ -6,10 +6,12 @@ set -x
 
 DSTDIR=$PWD
 TOPDIR=$(dirname $0)
-PRDDIR=$TOPDIR/product/usr/share/anaconda/pixmaps
+PRDDIR=$TOPDIR/product/
+PIXMAPDIR=$PRDDIR/usr/share/anaconda/pixmaps
 
 mkdir -p $PRDDIR
-cp -v $TOPDIR/sidebar-logo.png $PRDDIR/
+cp -v $TOPDIR/sidebar-logo.png "$PIXMAPDIR/"
+cp -v .buildstamp "$PRDDIR/"
 
 pushd $TOPDIR/product/
 find . | cpio -c -o | pigz -9cv > $DSTDIR/product.img

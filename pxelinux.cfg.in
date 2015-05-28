@@ -15,21 +15,21 @@ LABEL bootlocal
 
 MENU SEPARATOR
 
-label Engine (x86_64):
-        MENU DISABLE
+#label Engine (x86_64):
+#        MENU DISABLE
+#
+#label engine-install
+#        MENU LABEL Interactive Installation
+#        MENU INDENT 1
+#        kernel @ENGINEBASEURL@/vmlinuz
+#        initrd @ENGINEBASEURL@/initrd.img
+#        APPEND inst.ks=@ENGINEBASEURL@/interactive-installation.ks inst.stage2=@ENGINEBASEURL@/ rhgb quiet
+#        TEXT HELP
+#             Selecting this entry will start an installer to install
+#             oVirt Engine (x86_64).
+#        ENDTEXT
 
-label engine-install
-        MENU LABEL Interactive Installation
-        MENU INDENT 1
-        kernel @ENGINEBASEURL@/vmlinuz
-        initrd @ENGINEBASEURL@/initrd.img
-        APPEND inst.ks=@ENGINEBASEURL@/interactive-installation.ks inst.stage2=@ENGINEBASEURL@/ rhgb quiet
-        TEXT HELP
-             Selecting this entry will start an installer to install
-             oVirt Engine (x86_64).
-        ENDTEXT
-
-MENU SEPARATOR
+#MENU SEPARATOR
 
 label Node (x86_64):
         MENU DISABLE

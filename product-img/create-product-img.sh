@@ -12,7 +12,7 @@ PIXMAPDIR=$PRDDIR/usr/share/anaconda/pixmaps
 mkdir -p "$PRDDIR" "$PIXMAPDIR"
 cp -v $TOPDIR/sidebar-logo.png "$PIXMAPDIR/"
 
-sed -e "s/@BUILDID@/$(date +%Y%m%d)/" buildstamp.in > "$PRDDIR/.buildstamp"
+sed -e "s/@BUILDID@/$(date +%Y%m%d)/" "$TOPDIR/buildstamp.in" > "$PRDDIR/.buildstamp"
 
 pushd $TOPDIR/product/
 find . | cpio -c -o | pigz -9cv > $DSTDIR/product.img

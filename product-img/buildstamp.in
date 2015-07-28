@@ -1,6 +1,6 @@
 [Main]
-Product=oVirt Appliance
-Version=development
+Product=oVirt Node Appliance
+Version=3.6
 BugURL=https://bugzilla.redhat.com
 IsFinal=False
 UUID=@BUILDID@.x86_64

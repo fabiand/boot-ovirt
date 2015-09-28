@@ -67,7 +67,7 @@ label node-boot
         MENU INDENT 1
         kernel @NODEBASEURL@/vmlinuz
         initrd @NODEBASEURL@/initrd.img
-        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img rhgb quiet rd.live.fsimg=1
+        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img rhgb quiet rd.writable.fsimg=1
         TEXT HELP
              Selecting this entry will boot the live image of
              oVirt Node (x86_64).

@@ -21,9 +21,9 @@ cp -v \
 # Create pxelinux.cfg
 #
 :> pxelinux.cfg
-sed -e \
-  "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
-  "s~@BOOBASEURL@~$BOOBASEURL~g" \
+sed \
+  -e "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
+  -e "s~@BOOBASEURL@~$BOOBASEURL~g" \
   pxelinux.cfg.in > pxelinux.cfg
 
 
@@ -32,8 +32,8 @@ sed -e \
 #
 git submodule update --init --recursive --force
 
-sed -e \
-  "s~@BOOBASEURL@~$BOOBASEURL~g" \
+sed \
+  -e "s~@BOOBASEURL@~$BOOBASEURL~g" \
   script0.ipxe.in > ipxe/src/script0.ipxe
 
 pushd ipxe/src

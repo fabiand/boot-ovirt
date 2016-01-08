@@ -1,5 +1,5 @@
 [Main]
-Product=oVirt Node Appliance
+Product=oVirt Node Next
 Version=3.6
 BugURL=https://bugzilla.redhat.com
 IsFinal=False

@@ -3,7 +3,6 @@
 set -ex
 
 [[ -n $NODE_MANUAL_KS_URL ]]
-[[ -n $NODE_KS_UPDATES_URL ]]
 [[ -n $BOOBASEURL ]]
 
 #
@@ -23,9 +22,9 @@ cp -v \
 #
 :> pxelinux.cfg
 sed -e \
-    "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
-    "s~@NODE_KS_UPDATES_URL@~$NODE_KS_UPDATES_URL~g" \
-    pxelinux.cfg.in > pxelinux.cfg
+  "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
+  "s~@BOOBASEURL@~$BOOBASEURL~g" \
+  pxelinux.cfg.in > pxelinux.cfg
 
 
 #
@@ -33,7 +32,8 @@ sed -e \
 #
 git submodule update --init --recursive --force
 
-sed -e "s~@BOOBASEURL@~$BOOBASEURL~g" \
+sed -e \
+  "s~@BOOBASEURL@~$BOOBASEURL~g" \
   script0.ipxe.in > ipxe/src/script0.ipxe
 
 pushd ipxe/src

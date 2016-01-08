@@ -31,7 +31,7 @@ MENU SEPARATOR
 
 #MENU SEPARATOR
 
-label Node (x86_64):
+label oVirt Node Next Early-Preview (x86_64):
         MENU DISABLE
 
 label node-install
@@ -39,16 +39,17 @@ label node-install
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
         initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND inst.ks=@NODEBASEURL@/interactive-installation.ks inst.stage2=@NODEBASEURL@/ rhgb quiet
+        APPEND inst.ks=@NODE_MANUAL_KS_URL@ inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
-             oVirt Node (x86_64).
+             oVirt Node Next (x86_64).
         ENDTEXT
 
 # Currently blocked by:
 # http://bugs.centos.org/view.php?id=8239 (old centos installer image)
 # https://bugzilla.redhat.com/show_bug.cgi?id=1145130 (new fedora installer can not be used with centos image)
 #label node-auto-install
+#        MENU HIDE
 #        MENU LABEL Auto-Installation DESTRUCTIVE
 #        MENU INDENT 1
 #        MENU PASSWD y
@@ -63,6 +64,7 @@ label node-install
 #        ENDTEXT
 
 label node-boot
+        MENU HIDE
         MENU LABEL Boot
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz

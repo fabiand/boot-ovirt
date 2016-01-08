@@ -2,6 +2,8 @@
 
 set -ex
 
+[[ -n $NODE_MANUAL_KS_URL ]]
+[[ -n $BOOBASEURL ]]
 
 #
 # Prepare syslinux
@@ -19,9 +21,7 @@ cp -v \
 # Create pxelinux.cfg
 #
 :> pxelinux.cfg
-[[ -n $NODEBASEURL ]]
-sed -e "s~@NODEBASEURL@~$NODEBASEURL~g" \
-    -e "s~@ENGINEBASEURL@~$ENGINEBASEURL~g" \
+sed -e "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
     pxelinux.cfg.in > pxelinux.cfg
 
 
@@ -30,7 +30,6 @@ sed -e "s~@NODEBASEURL@~$NODEBASEURL~g" \
 #
 git submodule update --init --recursive --force
 
-[[ -n $BOOBASEURL ]]
 sed -e "s~@BOOBASEURL@~$BOOBASEURL~g" \
   script0.ipxe.in > ipxe/src/script0.ipxe
 

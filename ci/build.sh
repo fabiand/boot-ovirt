@@ -3,6 +3,7 @@
 set -ex
 
 [[ -n $NODE_MANUAL_KS_URL ]]
+[[ -n $NODE_KS_UPDATES_URL ]]
 [[ -n $BOOBASEURL ]]
 
 #
@@ -21,7 +22,9 @@ cp -v \
 # Create pxelinux.cfg
 #
 :> pxelinux.cfg
-sed -e "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
+sed -e \
+    "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
+    "s~@NODE_KS_UPDATES_URL@~$NODE_KS_UPDATES_URL~g" \
     pxelinux.cfg.in > pxelinux.cfg
 
 

@@ -39,7 +39,7 @@ label node-install
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
         initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND inst.ks=@NODE_MANUAL_KS_URL@ inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        APPEND inst.ks=@NODE_MANUAL_KS_URL@ inst.updates=@NODE_KS_UPDATES_URL@ inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Node Next (x86_64).

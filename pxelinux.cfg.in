@@ -39,7 +39,7 @@ label node-install-stable
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
         initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND inst.ks=@BOOBASEURL@/ovirt-3.6.ks inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        APPEND inst.ks=@BOOBASEURL@/ovirt-3.6.ks inst.updates=@BOOBASEURL@/ovirt-3.6-product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Node Next (x86_64).
@@ -50,7 +50,7 @@ label node-install-pre
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
         initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND inst.ks=@BOOBASEURL@/ovirt-4.0.ks inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        APPEND inst.ks=@BOOBASEURL@/ovirt-4.0.ks inst.updates=@BOOBASEURL@/ovirt-4.0-product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Node Next (x86_64).
@@ -61,7 +61,7 @@ label node-install-master
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
         initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND inst.ks=@BOOBASEURL@/master.ks inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        APPEND inst.ks=@BOOBASEURL@/master.ks inst.updates=@BOOBASEURL@/master-product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Node Next (x86_64).

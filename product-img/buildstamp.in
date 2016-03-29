@@ -1,9 +1,0 @@
-[Main]
-Product=oVirt Node Next
-Version=3.6
-BugURL=https://bugzilla.redhat.com
-IsFinal=False
-UUID=@BUILDID@.x86_64
-[Compose]
-Lorax=21.30-1
-

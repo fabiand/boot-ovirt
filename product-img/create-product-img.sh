@@ -4,6 +4,8 @@
 
 set -x
 
+BRANCH=${BRANCH:-master}
+ISFINAL=${ISFINAL:-False}
 DSTDIR=$PWD
 TOPDIR=$(dirname $0)
 PRDDIR=$TOPDIR/product/
@@ -12,10 +14,19 @@ PIXMAPDIR=$PRDDIR/usr/share/anaconda/pixmaps
 mkdir -p "$PRDDIR" "$PIXMAPDIR"
 cp -v $TOPDIR/sidebar-logo.png "$PIXMAPDIR/"
 
-sed -e "s/@BUILDID@/$(date +%Y%m%d)/" "$TOPDIR/buildstamp.in" > "$PRDDIR/.buildstamp"
+cat <<EOF > "$PRDDIR/.buildstamp"
+[Main]
+Product=oVirt Node Next
+Version=${BRANCH}
+BugURL=https://bugzilla.redhat.com
+IsFinal=${ISFINAL}
+UUID=$(date +%Y%m%d).x86_64
+[Compose]
+Lorax=21.30-1
+EOF
 
 pushd $TOPDIR/product/
-find . | cpio -c -o | pigz -9cv > $DSTDIR/product.img
+  find . | cpio -c -o | pigz -9cv > $DSTDIR/product.img
 popd
 
 unpigz < $DSTDIR/product.img | cpio -t

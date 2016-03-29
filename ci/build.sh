@@ -12,6 +12,10 @@ do
   curl -L "https://gerrit.ovirt.org/gitweb?p=ovirt-node-ng.git;a=blob_plain;f=docs/kickstart/minimal-kickstart.ks;hb=${BRANCH}" \
   | sed "s%URL_TO_SQUASHFS%http://jenkins.ovirt.org/job/ovirt-node-ng_${BRANCH}_build-artifacts-fc22-x86_64/lastSuccessfulBuild/artifact/exported-artifacts/ovirt-node-ng-image.squashfs.img%" \
   | tee "${BRANCH}.ks"
+
+  # Build the product image
+  BRANCH=${BRANCH} ISFINAL=False bash -xe product-img/create-product-img.sh
+  mv -v product.img "${BRANCH}-product.img"
 done
 
 #
@@ -52,7 +56,3 @@ popd
 rm -f ovirt-ipxe.iso ovirt-ipxe.usb
 ln -v ipxe/src/bin/ipxe.iso ovirt-ipxe.iso
 ln -v ipxe/src/bin/ipxe.usb ovirt-ipxe.usb
-
-
-# Build the product image
-bash -xe product-img/create-product-img.sh

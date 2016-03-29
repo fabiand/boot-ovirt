@@ -31,15 +31,37 @@ MENU SEPARATOR
 
 #MENU SEPARATOR
 
-label oVirt Node Next Early-Preview (x86_64):
+label oVirt Node Next Preview (x86_64):
         MENU DISABLE
 
-label node-install
-        MENU LABEL Interactive Installation
+label node-install-stable
+        MENU LABEL Interactive Installation (oVirt 3.6)
         MENU INDENT 1
         kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
         initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND inst.ks=@NODE_MANUAL_KS_URL@ inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        APPEND inst.ks=@BOOBASEURL@/ovirt-3.6.ks inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        TEXT HELP
+             Selecting this entry will start an installer to install
+             oVirt Node Next (x86_64).
+        ENDTEXT
+
+label node-install-pre
+        MENU LABEL Interactive Installation (oVirt 4.0)
+        MENU INDENT 1
+        kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
+        initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
+        APPEND inst.ks=@BOOBASEURL@/ovirt-4.0.ks inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
+        TEXT HELP
+             Selecting this entry will start an installer to install
+             oVirt Node Next (x86_64).
+        ENDTEXT
+
+label node-install-master
+        MENU LABEL Interactive Installation (oVirt master)
+        MENU INDENT 1
+        kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
+        initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
+        APPEND inst.ks=@BOOBASEURL@/master.ks inst.updates=@BOOBASEURL@/product.img inst.stage2=http://mirror.centos.org/centos-7/7/os/x86_64/ rhgb quiet
         TEXT HELP
              Selecting this entry will start an installer to install
              oVirt Node Next (x86_64).

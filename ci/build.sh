@@ -2,8 +2,24 @@
 
 set -ex
 
-[[ -n $NODE_MANUAL_KS_URL ]]
 [[ -n $BOOBASEURL ]]
+
+#
+# Prepare kickstarts
+#
+for BRANCH in ovirt-3.6 ovirt-4.0 master;
+do
+  curl -L "https://gerrit.ovirt.org/gitweb?p=ovirt-node-ng.git;a=blob_plain;f=docs/kickstart/minimal-kickstart.ks;hb=$BRANCH" | tee "$BRANCH.ks"
+done
+
+#
+# Create pxelinux.cfg
+#
+:> pxelinux.cfg
+sed \
+  -e "s~@BOOBASEURL@~$BOOBASEURL~g" \
+  pxelinux.cfg.in > pxelinux.cfg
+
 
 #
 # Prepare syslinux
@@ -16,15 +32,6 @@ cp -v \
   /usr/share/syslinux/lpxelinux.0 \
   /usr/share/syslinux/*.c32 \
   .
-
-#
-# Create pxelinux.cfg
-#
-:> pxelinux.cfg
-sed \
-  -e "s~@NODE_MANUAL_KS_URL@~$NODE_MANUAL_KS_URL~g" \
-  -e "s~@BOOBASEURL@~$BOOBASEURL~g" \
-  pxelinux.cfg.in > pxelinux.cfg
 
 
 #

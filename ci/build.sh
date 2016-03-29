@@ -9,7 +9,9 @@ set -ex
 #
 for BRANCH in ovirt-3.6 ovirt-4.0 master;
 do
-  curl -L "https://gerrit.ovirt.org/gitweb?p=ovirt-node-ng.git;a=blob_plain;f=docs/kickstart/minimal-kickstart.ks;hb=$BRANCH" | tee "$BRANCH.ks"
+  curl -L "https://gerrit.ovirt.org/gitweb?p=ovirt-node-ng.git;a=blob_plain;f=docs/kickstart/minimal-kickstart.ks;hb=${BRANCH}" \
+  | sed "s%URL_TO_SQUASHFS%http://jenkins.ovirt.org/job/ovirt-node-ng_${BRANCH}_build-artifacts-fc22-x86_64/lastSuccessfulBuild/artifact/exported-artifacts/ovirt-node-ng-image.squashfs.img%" \
+  | tee "${BRANCH}.ks"
 done
 
 #

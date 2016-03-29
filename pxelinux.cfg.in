@@ -85,16 +85,16 @@ label node-install-master
 #             WARNING: THIS WILL DESTROY ALL DATA
 #        ENDTEXT
 
-label node-boot
-        MENU HIDE
-        MENU LABEL Boot
-        MENU INDENT 1
-        kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
-        initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
-        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img rhgb quiet rd.writable.fsimg=1
-        TEXT HELP
-             Selecting this entry will boot the live image of
-             oVirt Node (x86_64).
-             Note: This requires at least 2GB of RAM.
-        ENDTEXT
+#label node-boot
+#        MENU HIDE
+#        MENU LABEL Boot
+#        MENU INDENT 1
+#        kernel http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/vmlinuz
+#        initrd http://mirror.centos.org/centos-7/7/os/x86_64/images/pxeboot/initrd.img
+#        APPEND root=live:@NODEBASEURL@/rootfs.squashfs.img rhgb quiet rd.writable.fsimg=1
+#        TEXT HELP
+#             Selecting this entry will boot the live image of
+#             oVirt Node (x86_64).
+#             Note: This requires at least 2GB of RAM.
+#        ENDTEXT
 
